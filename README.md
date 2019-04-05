@@ -2,6 +2,25 @@
 
 [![](https://jitpack.io/v/sososeen09/android-actionCall.svg)](https://jitpack.io/#sososeen09/android-actionCall)
 
+在根 build.gradle 中 添加：
+
+```
+allprojects {
+repositories {
+...
+maven { url 'https://jitpack.io' }
+}
+}
+```
+
+添加依赖
+
+```
+dependencies {
+implementation 'com.github.sososeen09:android-actionCall:Tag'
+}
+```
+
 ## 1 前置条件框架场景
 
 1. 登录后去订阅书籍

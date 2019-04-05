@@ -2,9 +2,9 @@ package com.sososeen09.conditioncheck.sample;
 
 import android.content.Context;
 import android.content.Intent;
-import com.sososeen09.actioncall.ConditionChecker;
+import com.sososeen09.actioncall.Checker;
 
-class EnoughMoneyChecker implements ConditionChecker {
+class EnoughMoneyChecker implements Checker {
 
   private final Context mContext;
 

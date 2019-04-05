@@ -4,7 +4,7 @@ package com.sososeen09.actioncall;
  * 用于检查条件是否满足
  * @author yunlong
  */
-public interface ConditionChecker {
+public interface Checker {
 
 
   /**

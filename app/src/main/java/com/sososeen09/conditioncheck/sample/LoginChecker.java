@@ -2,19 +2,19 @@ package com.sososeen09.conditioncheck.sample;
 
 import android.content.Context;
 import android.content.Intent;
-import com.sososeen09.actioncall.ConditionChecker;
+import com.sososeen09.actioncall.Checker;
 
-class LoginConditionChecker implements ConditionChecker {
+class LoginChecker implements Checker {
 
   private final Context mContext;
 
-  public LoginConditionChecker(Context context) {
+  public LoginChecker(Context context) {
     this.mContext = context;
   }
 
   @Override
   public boolean check() {
-    return LoginStatus.isLogin;
+    return UserInfo.isLogin;
   }
 
   @Override

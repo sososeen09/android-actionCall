@@ -1,11 +1,14 @@
 package com.sososeen09.conditioncheck.sample;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.TextView;
 import android.widget.Toast;
-import com.sososeen09.actioncall.SingleActionCall;
+import com.sososeen09.actioncall.ActionCall;
+import com.sososeen09.actioncall.Checker;
 import com.sososeen09.actioncall.TargetAction;
 import com.sososeen09.conditioncheck.R;
 
@@ -20,14 +23,14 @@ public class MainActivity extends AppCompatActivity {
     findViewById(R.id.btn_getOrder).setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-        SingleActionCall.getInstance()
+        ActionCall.getInstance()
             .addTargetAction(new TargetAction() {
               @Override
               public void action() {
                 Toast.makeText(MainActivity.this, "get order success", Toast.LENGTH_SHORT).show();
               }
             })
-            .addConditionAction(new LoginConditionChecker(MainActivity.this))
+            .addConditionAction(new LoginChecker(MainActivity.this))
             .goAhead();
       }
     });
@@ -36,15 +39,42 @@ public class MainActivity extends AppCompatActivity {
     findViewById(R.id.btn_buy_book).setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-        SingleActionCall.getInstance()
+        ActionCall.getInstance()
             .addTargetAction(new TargetAction() {
               @Override
               public void action() {
                 Toast.makeText(MainActivity.this, "buy book success", Toast.LENGTH_SHORT).show();
               }
             })
-            .addConditionAction(new LoginConditionChecker(MainActivity.this))
+            .addConditionAction(new LoginChecker(MainActivity.this))
             .addConditionAction(new EnoughMoneyChecker(MainActivity.this))
+            .goAhead();
+      }
+    });
+
+    //买书，需要登录并且余额充足
+    findViewById(R.id.btn_member).setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        ActionCall.getInstance()
+            .addTargetAction(new TargetAction() {
+              @Override
+              public void action() {
+                startActivity(new Intent(MainActivity.this, MemberActivity.class));
+              }
+            })
+            .addConditionAction(new LoginChecker(MainActivity.this))
+            .addResultAction(new Checker() {
+              @Override
+              public boolean check() {
+                return UserInfo.isMember;
+              }
+
+              @Override
+              public void doAction() {
+                setMemberStatus();
+              }
+            })
             .goAhead();
       }
     });
@@ -58,16 +88,23 @@ public class MainActivity extends AppCompatActivity {
     });
   }
 
+  private void setMemberStatus() {
+    ((TextView) findViewById(R.id.tv_member_status))
+        .setText("member status: " + (UserInfo.isMember));
+  }
+
   private void resetStatus() {
     UserInfo.moneyMount = 0;
-    LoginStatus.isLogin = false;
+    UserInfo.isLogin = false;
+    UserInfo.isMember = false;
+    setMemberStatus();
   }
 
 
   @Override
   protected void onResume() {
     super.onResume();
-    SingleActionCall.getInstance().continueGo();
+    ActionCall.getInstance().continueGo();
   }
 
 }

@@ -8,50 +8,62 @@ import java.util.Queue;
  *
  * @author yunlong
  */
-public class SingleActionCall {
+public class ActionCall {
 
   private TargetAction mTargetAction;
-  private Queue<ConditionChecker> mConditionCheckers = new ArrayDeque<>();
+  private Queue<Checker> mConditionCheckers = new ArrayDeque<>();
   private boolean mIsHandle;
-  private ConditionChecker mCurrentCondition;
+  private Checker mCurrentCondition;
+  private Checker mResultChecker;
 
-  private SingleActionCall() {
+  private ActionCall() {
   }
 
   private static class ConditionCheckManagerHolder {
 
-    private static final SingleActionCall INSTANCE = new SingleActionCall();
+    private static final ActionCall INSTANCE = new ActionCall();
   }
 
-  public static SingleActionCall getInstance() {
+  public static ActionCall getInstance() {
     return ConditionCheckManagerHolder.INSTANCE;
   }
 
-  public SingleActionCall addTargetAction(TargetAction targetAction) {
+  public ActionCall addTargetAction(TargetAction targetAction) {
     reset();
     this.mTargetAction = targetAction;
     return this;
   }
 
-  public SingleActionCall addConditionAction(ConditionChecker conditionChecker) {
+  public ActionCall addConditionAction(Checker checker) {
     if (mTargetAction == null) {
       throw new IllegalArgumentException("must set TargetAction first!!!");
     }
-    if (!conditionChecker.check()) {
-      mConditionCheckers.offer(conditionChecker);
+    if (!checker.check()) {
+      mConditionCheckers.offer(checker);
     }
+    return this;
+  }
+
+  public ActionCall addResultAction(Checker checker) {
+    if (mTargetAction == null) {
+      throw new IllegalArgumentException("must set TargetAction first!!!");
+    }
+    mResultChecker = checker;
     return this;
   }
 
   public final void continueGo() {
     if (!mIsHandle) {
-      reset();
       return;
     }
 
-    if (mCurrentCondition == null || mCurrentCondition.check()) {
+    if (mCurrentCondition != null && mCurrentCondition.check()) {
       goAhead();
       return;
+    }
+
+    if (mResultChecker != null && mResultChecker.check()) {
+      mResultChecker.doAction();
     }
 
     reset();
@@ -75,7 +87,9 @@ public class SingleActionCall {
         mTargetAction.action();
       }
     }
-    reset();
+    if (mResultChecker == null) {
+      reset();
+    }
   }
 
   private void reset() {
@@ -83,6 +97,7 @@ public class SingleActionCall {
     mConditionCheckers.clear();
     mCurrentCondition = null;
     mIsHandle = false;
+    mResultChecker = null;
   }
 
 }

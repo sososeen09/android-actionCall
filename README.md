@@ -1,4 +1,4 @@
-# 前置条件框架
+# ActionCall框架
 
 [![](https://jitpack.io/v/sososeen09/android-actionCall.svg)](https://jitpack.io/#sososeen09/android-actionCall)
 
@@ -6,10 +6,10 @@
 
 ```
 allprojects {
-repositories {
-...
-maven { url 'https://jitpack.io' }
-}
+	repositories {
+		...
+		maven { url 'https://jitpack.io' }
+	}
 }
 ```
 
@@ -17,11 +17,11 @@ maven { url 'https://jitpack.io' }
 
 ```
 dependencies {
-implementation 'com.github.sososeen09:android-actionCall:Tag'
+	implementation 'com.github.sososeen09:android-actionCall:Tag'
 }
 ```
 
-## 1 前置条件框架场景
+## 1 前置条件场景
 
 1. 登录后去订阅书籍
 2. 充值后去订阅书籍
@@ -43,7 +43,13 @@ implementation 'com.github.sososeen09:android-actionCall:Tag'
 
 1. targetAction，例如进行购买
 2. conditionAction，例如是否余额足够，包含两个动作，checkAction（进行检查），doAction（进行相应处理）
-3. resultAction，在第二步中进行了处理，但是处理结果是未知的，需要在返回的时候来检查结果是否满足，有两个重点
-1. 在什么时候检查，whenCheck
-2. 检查什么，whatCheck
+3. resultAction，在第二步中进行了处理，但是处理结果是未知的，需要在返回的时候来检查结果是否满足，有两个重点，在什么时候检查，whenCheck，检查什么，whatCheck。当所有的条件都满足，进行某些跳转或者动作，当该动作执行成功之后需要有后续的动作。
+
+
+
+## 4 后置条件场景
+
+除了之前跳转页面存在的前置条件，也存在后置条件
+
+1.  进入会员页，然后开通了会员，再返回该页面时应该刷新页面
 

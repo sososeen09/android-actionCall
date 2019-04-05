@@ -6,18 +6,17 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import com.sososeen09.conditioncheck.R;
 
-public class LoginActivity extends AppCompatActivity {
+public class MemberActivity extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_login);
+    setContentView(R.layout.activity_member);
 
-
-    findViewById(R.id.btn_login).setOnClickListener(new OnClickListener() {
+    findViewById(R.id.btn_open).setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-        UserInfo.isLogin = true;
+        UserInfo.isMember = true;
         finish();
       }
     });

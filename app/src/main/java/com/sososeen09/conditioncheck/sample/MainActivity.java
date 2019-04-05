@@ -47,12 +47,12 @@ public class MainActivity extends AppCompatActivity {
               }
             })
             .addConditionAction(new LoginChecker(MainActivity.this))
-            .addConditionAction(new EnoughMoneyChecker(MainActivity.this))
+            .addConditionAction(new MoneyChecker(MainActivity.this))
             .goAhead();
       }
     });
 
-    //买书，需要登录并且余额充足
+    //进入会员页面，需要登录，开通会员之后返回刷新页面
     findViewById(R.id.btn_member).setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {

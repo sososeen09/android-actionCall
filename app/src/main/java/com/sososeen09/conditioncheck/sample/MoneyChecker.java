@@ -4,11 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import com.sososeen09.actioncall.Checker;
 
-class EnoughMoneyChecker implements Checker {
+class MoneyChecker implements Checker {
 
   private final Context mContext;
 
-  public EnoughMoneyChecker(Context context) {
+  public MoneyChecker(Context context) {
     this.mContext = context;
   }
 

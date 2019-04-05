@@ -1,4 +1,7 @@
 # 前置条件框架
+
+[![](https://jitpack.io/v/sososeen09/android-actionCall.svg)](https://jitpack.io/#sososeen09/android-actionCall)
+
 ## 1 前置条件框架场景
 
 1. 登录后去订阅书籍

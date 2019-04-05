@@ -1,0 +1,16 @@
+repositories {
+    google()
+    jcenter()
+}
+
+dependencies {
+    compile localGroovy()
+    compile gradleApi()
+    compile 'com.android.tools.build:gradle:3.1.2'
+    compile 'com.android.tools.build:transform-api:1.5.0'
+//    compile files('libs/aspectjtools.jar')
+//    compile 'org.aspectj:aspectjweaver:1.8.8'
+//    compile 'com.google.code.gson:gson:2.8.2'
+    //javassist https://github.com/jboss-javassist/javassist
+//    compile 'org.javassist:javassist:3.20.0-GA'
+}

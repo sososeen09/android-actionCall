@@ -1,4 +1,4 @@
-package com.sososeen09.conditioncheck.sample;
+package com.sososeen09.actioncall.sample;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +11,6 @@ import android.widget.Toast;
 import com.sososeen09.actioncall.ActionCall;
 import com.sososeen09.actioncall.Checker;
 import com.sososeen09.actioncall.TargetAction;
-import com.sososeen09.conditioncheck.R;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.sososeen09.conditioncheck.sample;
+package com.sososeen09.actioncall.sample;
 
 public class UserInfo {
 

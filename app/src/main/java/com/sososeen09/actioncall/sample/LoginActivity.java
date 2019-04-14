@@ -1,22 +1,22 @@
-package com.sososeen09.conditioncheck.sample;
+package com.sososeen09.actioncall.sample;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.sososeen09.conditioncheck.R;
 
-public class MemberActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_member);
+    setContentView(R.layout.activity_login);
 
-    findViewById(R.id.btn_open).setOnClickListener(new OnClickListener() {
+
+    findViewById(R.id.btn_login).setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-        UserInfo.isMember = true;
+        UserInfo.isLogin = true;
         finish();
       }
     });

@@ -1,4 +1,4 @@
-package com.sososeen09.conditioncheck;
+package com.sososeen09.actioncall;
 
 import org.junit.Test;
 

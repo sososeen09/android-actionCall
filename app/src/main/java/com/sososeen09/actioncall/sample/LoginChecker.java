@@ -1,4 +1,4 @@
-package com.sososeen09.conditioncheck.sample;
+package com.sososeen09.actioncall.sample;
 
 import android.content.Context;
 import android.content.Intent;

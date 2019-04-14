@@ -1,4 +1,4 @@
-package com.sososeen09.conditioncheck.sample;
+package com.sososeen09.actioncall.sample;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
@@ -10,7 +10,6 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 import com.sososeen09.actioncall.ActionCall;
 import com.sososeen09.actioncall.TargetAction;
-import com.sososeen09.conditioncheck.R;
 
 public class PageView extends LinearLayout {
 

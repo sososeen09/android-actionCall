@@ -88,7 +88,7 @@
     android:layout_marginEnd="8dp"
     android:layout_marginLeft="8dp"
     android:layout_marginRight="8dp"
-    android:text="open member"
+    android:text="member page"
     android:textAllCaps="false"
     app:layout_constraintBottom_toTopOf="@+id/btn_reset"
     app:layout_constraintEnd_toEndOf="parent"
@@ -114,7 +114,7 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/btn_reset"
     app:layout_constraintVertical_bias="0.098">
-    <com.sososeen09.conditioncheck.sample.PageView
+    <com.sososeen09.actioncall.sample.PageView
       android:id="@+id/page_view"
       android:layout_width="200dp"
       android:layout_height="100dp"/>

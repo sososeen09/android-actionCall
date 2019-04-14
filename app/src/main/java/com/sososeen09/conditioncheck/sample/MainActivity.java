@@ -3,6 +3,7 @@ package com.sososeen09.conditioncheck.sample;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
@@ -14,11 +15,14 @@ import com.sososeen09.conditioncheck.R;
 
 public class MainActivity extends AppCompatActivity {
 
+  public static final String TAG = "MainActivity";
+  PageView mPageView;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-
+    mPageView = findViewById(R.id.page_view);
     //获取订单，需要登录
     findViewById(R.id.btn_getOrder).setOnClickListener(new OnClickListener() {
       @Override
@@ -86,6 +90,12 @@ public class MainActivity extends AppCompatActivity {
         resetStatus();
       }
     });
+  }
+
+  @Override
+  public void onWindowFocusChanged(boolean hasFocus) {
+    super.onWindowFocusChanged(hasFocus);
+    Log.e(TAG, "onWindowFocusChanged: " + hasFocus);
   }
 
   private void setMemberStatus() {
